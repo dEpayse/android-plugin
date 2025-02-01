@@ -22,7 +22,7 @@ import com.github.depayse.androidplugin.generateActivity
 fun mvvmActivityTemplate() = template {
     name = "Custom Activity"
     description = "Activity 생성"
-    minApi = 24
+    minApi = 21
 
     // 우클릭시 메뉴가 표시 될 위치, New>Activity>Custom Activity 로 표시
     category = Category.Activity
