@@ -1,7 +1,7 @@
 <!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
 <idea-plugin>
     <id>com.github.depayse.androidplugin</id>
-    <name>Android-Test</name>
+    <name>ArchitecturePatternTemplate</name>
     <vendor>depayse</vendor>
     <depends>org.jetbrains.kotlin</depends>
     <depends>org.jetbrains.android</depends>
