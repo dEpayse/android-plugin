@@ -12,6 +12,8 @@ fun generateAndroidManifest(
 
         <activity
             android:name="${packageName}.$activityName"
+            android:screenOrientation="portrait"
+            tools:ignore="DiscouragedApi"
             android:exported="$isLauncher"${
     if (isLauncher) {
         ">\n" +
