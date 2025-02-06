@@ -19,6 +19,7 @@ fun generateActivityKtWithLayout(
 ) = """
 package ${escapeKotlinIdentifier(packageName)}
 
+import android.os.Bundle
 import $namespace.R
 import $namespace.databinding.${layoutToBindingActivity(layoutName)}
 import com.passorder.core_ui.base.BaseActivity
