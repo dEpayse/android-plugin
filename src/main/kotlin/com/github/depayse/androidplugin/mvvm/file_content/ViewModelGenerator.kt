@@ -12,7 +12,7 @@ import com.passorder.core_ui.base.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 
 @HiltViewModel
-class MainViewModel: BaseViewModel() {
+class $viewModelName: BaseViewModel() {
     
 }
 
