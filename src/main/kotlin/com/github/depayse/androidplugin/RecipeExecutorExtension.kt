@@ -20,8 +20,6 @@ fun RecipeExecutor.generateActivity(
     // project 의 데이터, source code/resource/manifest 의 경로
     val (projectTemplateData, srcDir, resDir, manifestDir) = moduleData
 
-    addAllKotlinDependencies(moduleData)
-
     // activity, layout 경로
     val activityPath = srcDir.resolve("${activityName}.kt")
     val layoutPath = resDir.resolve("layout/${layoutName}.xml")
