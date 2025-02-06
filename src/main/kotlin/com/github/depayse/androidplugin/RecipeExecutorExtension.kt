@@ -62,7 +62,8 @@ fun RecipeExecutor.generateActivity(
             viewModelPath
         )
     }
-    // activity, layout 파일을 열어 화면에 표시
+    // activity, layout, viewmodel 파일을 열어 화면에 표시
     open(activityPath)
     open(layoutPath)
+    open(viewModelPath)
 }

@@ -21,8 +21,8 @@ import com.github.depayse.androidplugin.util.activityToViewModel
 
 
 fun mvvmActivityTemplate() = template {
-    name = "Custom Activity"
-    description = "Activity 생성"
+    name = "Base ViewModel Activity"
+    description = "Hilt 기반 Base ViewModel 과 Base Activity 생성"
     minApi = 21
 
     // 우클릭시 메뉴가 표시 될 위치, New>Activity>Custom Activity 로 표시
