@@ -17,6 +17,7 @@ import com.android.tools.idea.wizard.template.layoutToActivity
 import com.android.tools.idea.wizard.template.stringParameter
 import com.android.tools.idea.wizard.template.template
 import com.github.depayse.androidplugin.generateActivity
+import com.github.depayse.androidplugin.util.activityToViewModel
 
 
 fun mvvmActivityTemplate() = template {
@@ -39,6 +40,7 @@ fun mvvmActivityTemplate() = template {
     // 기본 패키지명을 저장
     val packageName = defaultPackageNameParameter
     lateinit var layoutName: StringParameter
+    lateinit var viewModelName: StringParameter
     // activity 이름을 받기 위한 string parameter
     val activityName = stringParameter {
         name = "Activity 이름"
@@ -48,19 +50,27 @@ fun mvvmActivityTemplate() = template {
         suggest = { layoutToActivity(layoutName.value) }
     }
     // layout 을 구성하는 xml 파일을 만들지 체크하기 위한 boolean parameter
-    val generateLayout = booleanParameter {
-        name = "layout file 생성 여부"
+    val generateViewModel = booleanParameter {
+        name = "viewModel file 생성 여부"
         default = true
     }
     // layout 이름을 받을 string parameter 로 위의 boolean 값에 따라 화면 표시 여부 추가
     layoutName = stringParameter {
         name = "Layout 이름"
-        visible = { generateLayout.value }
         default = "activity_main"
         constraints = listOf(Constraint.LAYOUT, Constraint.NONEMPTY, Constraint.UNIQUE)
         // activity 이름으로 layout 이름 제안
         suggest = { activityToLayout(activityName.value) }
     }
+
+    viewModelName = stringParameter {
+        name = "ViewModel 이름"
+        default = "MainViewModel"
+        visible = { generateViewModel.value }
+        constraints = listOf(Constraint.CLASS, Constraint.NONEMPTY)
+        suggest = { activityToViewModel(activityName.value) }
+    }
+
     // launcher activity 설정
     val isLauncher = booleanParameter {
         name = "Launcher Activity"
@@ -71,9 +81,10 @@ fun mvvmActivityTemplate() = template {
     // 화면 구성
     widgets(
         TextFieldWidget(activityName),
-        CheckBoxWidget(generateLayout),
         TextFieldWidget(layoutName),
         CheckBoxWidget(isLauncher),
+        TextFieldWidget(viewModelName),
+        CheckBoxWidget(generateViewModel),
         PackageNameWidget(packageName)
     )
 
@@ -83,7 +94,8 @@ fun mvvmActivityTemplate() = template {
             moduleData = data as ModuleTemplateData,
             packageName = packageName.value,
             activityName = activityName.value,
-            generateLayout = generateLayout.value,
+            viewModelName = viewModelName.value,
+            generateViewModel = generateViewModel.value,
             isLauncher = isLauncher.value,
             layoutName = layoutName.value
         )
