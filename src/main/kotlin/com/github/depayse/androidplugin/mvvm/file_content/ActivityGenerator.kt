@@ -1,7 +1,6 @@
 package com.github.depayse.androidplugin.mvvm.file_content
 
 import com.android.tools.idea.wizard.template.escapeKotlinIdentifier
-import com.android.tools.idea.wizard.template.layoutToActivity
 import com.github.depayse.androidplugin.util.layoutToBindingActivity
 
 /**
@@ -21,7 +20,7 @@ fun generateActivityKtWithLayout(
 package ${escapeKotlinIdentifier(packageName)}
 
 import $namespace.R
-import $namespace.databinding.${layoutToActivity(layoutName)}Binding
+import $namespace.databinding.${layoutToBindingActivity(layoutName)}Binding
 import com.passorder.core_ui.base.BaseActivity
 import dagger.hilt.android.AndroidEntryPoint
 
