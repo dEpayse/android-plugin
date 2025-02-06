@@ -2,8 +2,7 @@ package com.github.depayse.androidplugin
 
 import com.android.tools.idea.wizard.template.ModuleTemplateData
 import com.android.tools.idea.wizard.template.RecipeExecutor
-import com.android.tools.idea.wizard.template.impl.activities.common.addAllKotlinDependencies
-import com.github.depayse.androidplugin.mvvm.file_content.generateActivityKtWithLayout
+import com.github.depayse.androidplugin.mvvm.file_content.generateActivityKt
 import com.github.depayse.androidplugin.mvvm.file_content.generateActivityLayout
 import com.github.depayse.androidplugin.mvvm.file_content.generateAndroidManifest
 import com.github.depayse.androidplugin.mvvm.file_content.generateViewModel
@@ -34,10 +33,12 @@ fun RecipeExecutor.generateActivity(
 
     // activity 코틀린 파일 저장
     save(
-        generateActivityKtWithLayout(
+        generateActivityKt(
             namespace = moduleData.namespace,
             packageName = packageName,
             activityName = activityName,
+            viewModelName = viewModelName,
+            generateViewModel = generateViewModel,
             layoutName = layoutName
         ),
         activityPath
